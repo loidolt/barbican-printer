@@ -1,0 +1,32 @@
+Start---
+
+G21 ;metric values
+M82 ;set extruder to absolute mode
+G28 ; Home extruder
+M117 Heating...
+M116 ; wait all temperatures ready
+G90 ; set absolute coordinates
+M117 Start
+M117 Cleaning
+M100 ; Cleaning
+G1 Z5 F1500
+G1 X0 Y15 F1000
+G1 X4 Y30 F1000
+G92 E0 ; reset extrusion distance
+M117 Printing
+
+Stop---
+
+M104 S0 ; turn off extruder
+G90 ; Absolute
+G28 X0 Y0 ; home
+M117 Down Bed
+G1 Z200 ; Lower bed
+M117 Cleaning
+M100 ;Cleaning
+M117 Cooling
+M190 S50 ; Bed (cooling and wait for stabilize)
+M140 S0 ; turn off Bed
+M117 Pickup piece
+M84 ; Disable motors
+M117 Printer Ready
